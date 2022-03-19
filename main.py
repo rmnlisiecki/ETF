@@ -1,0 +1,49 @@
+import matplotlib.pyplot as plt
+from twelve_data import TwelveData
+import numpy as np
+
+
+currency_pair = "USD/PLN"
+ticker = ["GOLD"]
+prices_PLN = []
+
+twelve_data = TwelveData()
+print(twelve_data.get_all_data(ticker))
+
+security_dataset = twelve_data.get_specific_data(ticker, "close")
+fx_dataset = twelve_data.get_specific_data(currency_pair, "close")
+
+time = [i for i in range(0, len(security_dataset))][::-1]
+security_in_pln = [a * b for a, b in zip(security_dataset, fx_dataset)]
+
+all_quantiles = [
+    np.quantile(security_in_pln, .25),
+    np.quantile(security_in_pln, .50),
+    np.quantile(security_in_pln, .75),
+]
+
+plt.plot(
+    time,
+    security_in_pln,
+    linewidth=0.75,
+)
+plt.plot(
+    time,
+    [all_quantiles for i in range(0, len(security_in_pln))],
+    linestyle='dashed',
+    color='black',
+    linewidth=0.75,
+
+)
+plt.show()
+
+
+# dates = twelve_data.get_specific_data(currency_pair, "datetime")
+# print(security_dataset)
+# print(fx_dataset)
+# print(security_in_pln)
+# print((dates)[::-1])
+
+# https://api.twelvedata.com/time_series?symbol=ERUS&interval=1min&exchange=NYSE&country=Russia&type=etf&format=JSON&apikey=056f9e830b1e4dc18f68149d53bb8c45
+#https://api.twelvedata.com/stocks
+#https://api.twelvedata.com/etfs
