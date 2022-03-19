@@ -36,14 +36,3 @@ plt.plot(
 
 )
 plt.show()
-
-
-# dates = twelve_data.get_specific_data(currency_pair, "datetime")
-# print(security_dataset)
-# print(fx_dataset)
-# print(security_in_pln)
-# print((dates)[::-1])
-
-# https://api.twelvedata.com/time_series?symbol=ERUS&interval=1min&exchange=NYSE&country=Russia&type=etf&format=JSON&apikey=056f9e830b1e4dc18f68149d53bb8c45
-#https://api.twelvedata.com/stocks
-#https://api.twelvedata.com/etfs
