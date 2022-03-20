@@ -2,9 +2,10 @@ import matplotlib.pyplot as plt
 from twelve_data import TwelveData
 import numpy as np
 
-
-currency_pair = "USD/PLN"
-ticker = ["GOLD"]
+print("Provide currency pair: ")
+currency_pair = input() #e.g."USD/PLN"
+print("Provide ticker: ")
+ticker = input() #e.g.["GOLD"]
 prices_PLN = []
 
 twelve_data = TwelveData()
